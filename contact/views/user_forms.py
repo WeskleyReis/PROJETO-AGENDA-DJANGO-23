@@ -30,10 +30,10 @@ def user_update(request):
     if request.method == 'POST':
         form = RegisterUpdateForm(data=request.POST, instance=request.user)
 
-    if form.is_valid():
-        form.save()
-        messages.success(request, 'Atualizado com sucesso!')
-        return redirect('contact:user_update')
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Atualizado com sucesso!')
+            return redirect('contact:user_update')
     
     return render(
         request,
